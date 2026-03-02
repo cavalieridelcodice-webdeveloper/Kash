@@ -1,0 +1,16 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+body {
+  background: linear-gradient(#492F45, #D2A44E , #D5D3DE, #53A2CE, #07014C);
+  min-height: 100vh; /* Assicura che lo sfondo copra tutta l'altezza dello schermo */
+  margin: 0;
+}
+
+
+
+
+

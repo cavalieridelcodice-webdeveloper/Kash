@@ -1,0 +1,266 @@
+.expense-container {
+    max-width: 1000px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.expense-header,
+.expense-item {
+    display: grid;
+    grid-template-columns: 2fr 140px 1.5fr 1.2fr 160px;
+    /* Colonna Importo passata a 140px per sicurezza */
+    align-items: center;
+    padding: 15px 20px;
+    gap: 15px;
+}
+
+.expense-header {
+    background: rgba(40, 114, 161, 0.9);
+    backdrop-filter: blur(5px);
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    border-radius: 12px 12px 0 0;
+}
+
+.expense-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.expense-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    color: #fff;
+}
+
+.expense-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.01);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.expense-item:last-child {
+    border-bottom: none;
+    border-radius: 0 0 12px 12px;
+}
+
+.col {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.amt {
+    font-weight: 800;
+    text-align: left;
+}
+
+.income-text {
+    color: #4ade80;
+    /* Verde brillante per entrate */
+}
+
+.expense-text {
+    color: #ff5252;
+    /* Rosso accesso per uscite */
+}
+
+.cat {
+    color: #fff;
+    /* Bianco pieno per categoria */
+    font-weight: 600;
+}
+
+.date {
+    color: rgba(255, 255, 255, 0.8);
+    /* Data più visibile */
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Bottoni Azione Premium */
+.btn-edit,
+.btn-delete {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-edit {
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    background: rgba(74, 222, 128, 0.1);
+    color: #4ade80;
+}
+
+.btn-edit:hover {
+    background: #4ade80;
+    color: #064e3b;
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
+    transform: translateY(-1px);
+}
+
+.btn-delete {
+    border: 1px solid rgba(255, 71, 87, 0.3);
+    background: rgba(255, 71, 87, 0.1);
+    color: #ff4757;
+    opacity: 0.7;
+}
+
+.btn-delete:hover {
+    opacity: 1;
+    background: #ff4757;
+    color: white;
+    box-shadow: 0 0 15px rgba(255, 71, 87, 0.4);
+    transform: translateY(-1px);
+}
+
+.no-expenses {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 60px;
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.item-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+/* Stile per il modulo di modifica inline */
+.edit-expense-form {
+    display: contents;
+}
+
+.edit-expense-form input,
+.edit-expense-form select {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    width: 100%;
+    font-weight: 500;
+    box-sizing: border-box;
+    /* Previene sbordamenti e sovrapposizioni dei box */
+}
+
+.edit-expense-form input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.edit-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    grid-column: span 2;
+    /* Su Desktop, copre le restanti due colonne (Data e Azioni) */
+    width: 100%;
+}
+
+.btn-save,
+.btn-cancel {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-save {
+    background: #4ade80;
+    color: #064e3b;
+}
+
+.btn-cancel {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-save:hover {
+    background: #22c55e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+}
+
+.btn-cancel:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Smartphone (fino a 480px) */
+@media (max-width: 480px) {
+    .expense-container {
+        margin: 20px 15px;
+        border-radius: 30px;
+    }
+
+    .expense-header {
+        display: none;
+        /* Nascondiamo l'intestazione su mobile per usare un layout a card */
+    }
+
+    .expense-item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 8px;
+    }
+
+    .col.desc {
+        font-size: 1.3rem;
+        font-weight: bold;
+        width: 100%;
+    }
+
+    .col.amt {
+        font-size: 1.6rem;
+        margin: 5px 0;
+    }
+
+    .col.cat,
+    .col.date {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .item-actions {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+
+    .item-actions button {
+        flex: 1;
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+}

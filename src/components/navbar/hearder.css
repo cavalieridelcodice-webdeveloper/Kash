@@ -1,0 +1,191 @@
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.1);
+    /* Sfondo semi-trasparente */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff;
+    height: 150px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    /* Centra il titolo */
+    align-items: center;
+    /* Centra verticalmente */
+    padding: 0 25px;
+}
+
+.logo-container {
+    position: absolute;
+    /* Rende il logo indipendente dal flusso flex */
+    left: 25px;
+    bottom: 10px;
+    /* Lo blocca sulla sinistra */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.logo {
+    width: auto;
+    height: 95px;
+    /* Ingrandito */
+    padding: 0;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+    z-index: 2;
+    position: relative;
+}
+
+.app-name {
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 6px;
+    margin-top: -35px;
+    /* Sovrapposizione col logo */
+    z-index: 1;
+    position: relative;
+
+    /* Gradiente di colori brillanti direttamente sul testo */
+    background: linear-gradient(135deg, #4ade80 0%, #3b82f6 50%, #a855f7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    /* Risalto tramite ombreggiatura esterna */
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+    text-transform: uppercase;
+    transition: transform 0.3s ease;
+}
+
+.app-name:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
+}
+
+.title {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0;
+    /* Rimuovi margini che potrebbero spostarlo */
+    color: #cbdde9;
+    text-align: center;
+}
+
+/* Nuova classe per lo Username */
+.username-red {
+    color: red !important;
+    text-transform: uppercase;
+}
+
+.logout-btn {
+    position: absolute;
+    right: 40px;
+    bottom: 25px;
+    background: rgba(255, 82, 82, 0.2);
+    border: 1px solid rgba(255, 82, 82, 0.4);
+    color: #ff5252;
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.logout-btn:hover {
+    background: rgba(255, 82, 82, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 82, 82, 0.3);
+}
+
+/* Tablet (fino a 768px) */
+@media (max-width: 768px) {
+    .main-header {
+        height: 125px;
+        padding: 0 15px;
+        justify-content: flex-end;
+        /* Spinge il titolo verso destra */
+    }
+
+    .logout-btn {
+        right: 15px;
+        bottom: 10px;
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+
+    .logo {
+        height: 70px;
+    }
+
+    .app-name {
+        font-size: 1.1rem;
+        letter-spacing: 3px;
+    }
+
+    .logo-container {
+        left: 15px;
+        bottom: 10px;
+    }
+
+    .title {
+        font-size: 30px;
+        /* Titolo leggermente più piccolo per far spazio */
+        margin-right: 80px;
+        /* Spazio per il bottone esci */
+    }
+}
+
+/* Smartphone (fino a 480px) */
+@media (max-width: 480px) {
+    .main-header {
+        height: auto;
+        min-height: 140px;
+        flex-direction: column;
+        padding: 10px 10px 20px 10px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .logo-container {
+        position: relative;
+        /* Toglie il posizionamento assoluto per impilarlo */
+        left: 0;
+        bottom: 0;
+        justify-content: center;
+    }
+
+    .logo {
+        height: 65px;
+        padding-top: 0;
+    }
+
+    .app-name {
+        font-size: 1rem;
+        letter-spacing: 2px;
+        padding: 1px 10px;
+    }
+
+    .title {
+        font-size: 16px;
+        line-height: 1.2;
+        text-align: center;
+        width: 100%;
+        margin: 0;
+    }
+
+    .logout-btn {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin-top: 5px;
+        padding: 6px 15px;
+        font-size: 0.8rem;
+    }
+}

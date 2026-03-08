@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { supabase } from '../../supabaseClient';
 import './Login.css';
 
@@ -9,6 +9,10 @@ function Login() {
     const [showPassword, setShowPassword] = useState(false);
     const [isSignUp, setIsSignUp] = useState(false);
     const [error, setError] = useState(null);
+
+    // Refs for explicit iOS focus
+    const emailRef = useRef(null);
+    const passwordRef = useRef(null);
 
     const handleAuth = async (e) => {
         e.preventDefault();
@@ -41,11 +45,13 @@ function Login() {
                     <div className="input-group">
                         <label>Email</label>
                         <input
+                            ref={emailRef}
                             type="email"
                             placeholder="tua@email.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             onFocus={(e) => e.target.select()}
+                            onClick={() => emailRef.current?.focus()}
                             autoComplete="email"
                             autoCapitalize="none"
                             autoCorrect="off"
@@ -57,11 +63,13 @@ function Login() {
                         <label>Password</label>
                         <div className="password-input-wrapper">
                             <input
+                                ref={passwordRef}
                                 type={showPassword ? "text" : "password"}
                                 placeholder="••••••••"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 onFocus={(e) => e.target.select()}
+                                onClick={() => passwordRef.current?.focus()}
                                 autoComplete="current-password"
                                 required
                             />

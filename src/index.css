@@ -28,10 +28,11 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  display: block;
+  /* Display block è più sicuro per il resize della tastiera su iOS */
   min-width: 320px;
   min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 
 h1 {
@@ -53,6 +54,15 @@ button {
 
 button:hover {
   border-color: #646cff;
+}
+
+/* Fix per iOS PWA: permette di cliccare e scrivere negli input */
+input,
+textarea {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+  font-size: 16px !important;
+  /* Forza 16px per evitare zoom automatico fastidioso */
 }
 
 button:focus,

@@ -1,13 +1,13 @@
 // Simple Service Worker for PWA installability
-const CACHE_NAME = 'kash-v4';
+const CACHE_NAME = 'kash-v5';
 const ASSETS_TO_CACHE = [
-    '/',
-    '/index.html',
-    '/site.webmanifest',
-    '/kash-icon.png',
-    '/web-app-manifest-192x192.png',
-    '/web-app-manifest-512x512.png',
-    '/apple-touch-icon.png'
+    './',
+    './index.html',
+    './site.webmanifest',
+    './kash-icon.png',
+    './web-app-manifest-192x192.png',
+    './web-app-manifest-512x512.png',
+    './apple-touch-icon.png'
 ];
 
 self.addEventListener('install', (event) => {

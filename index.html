@@ -9,15 +9,31 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <meta name="theme-color" content="#1e1e2d" />
 
-  <!-- Apple Native Feel -->
+  <!-- Native Feel Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="KASH" />
+  <meta name="application-name" content="KASH" />
+
+  <!-- Windows specific -->
+  <meta name="msapplication-TileColor" content="#1e1e2d" />
+  <meta name="msapplication-TileImage" content="/web-app-manifest-144x144.png" />
+  <meta name="msapplication-config" content="none" />
 
   <title>KASH - Gestione Finanziaria</title>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js');
+      });
+    }
+  </script>
 </head>
 
 <body>

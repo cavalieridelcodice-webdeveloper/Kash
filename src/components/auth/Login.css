@@ -1,10 +1,14 @@
 .login-container {
     min-height: 100vh;
+    min-height: -webkit-fill-available;
     display: flex;
     justify-content: center;
     align-items: center;
     background: linear-gradient(#492F45, #D2A44E, #D5D3DE, #53A2CE, #07014C);
     padding: 20px;
+    /* iOS fix: enable touch events on container */
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
 }
 
 .login-card {
@@ -50,17 +54,23 @@
 .input-group input {
     width: 100%;
     background: rgba(255, 255, 255, 0.9);
-    /* Più opaco per far risaltare il testo nero */
     border: 2px solid rgba(255, 255, 255, 0.4);
     padding: 12px 16px;
     border-radius: 12px;
     color: #000;
-    /* Testo nero per massima visibilità */
-    font-size: 1rem;
+    /* 16px minimum prevents iOS auto-zoom which blocks input */
+    font-size: 16px;
     font-weight: 500;
     outline: none;
     transition: all 0.3s ease;
     box-sizing: border-box;
+    /* iOS PWA critical fixes */
+    -webkit-user-select: text !important;
+    user-select: text !important;
+    touch-action: auto;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 .input-group input::placeholder {

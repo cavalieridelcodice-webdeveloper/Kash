@@ -45,6 +45,11 @@ function Login() {
                             placeholder="tua@email.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            onFocus={(e) => e.target.select()}
+                            autoComplete="email"
+                            autoCapitalize="none"
+                            autoCorrect="off"
+                            spellCheck="false"
                             required
                         />
                     </div>
@@ -56,6 +61,8 @@ function Login() {
                                 placeholder="••••••••"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
+                                onFocus={(e) => e.target.select()}
+                                autoComplete="current-password"
                                 required
                             />
                             <span

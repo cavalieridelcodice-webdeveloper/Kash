@@ -37,8 +37,31 @@
 </head>
 
 <body>
+  <!-- Splash Screen Overlay -->
+  <div id="splash-screen">
+    <div class="splash-content">
+      <img src="/kash-icon.png" alt="KASH Logo" class="splash-logo" />
+      <h1 class="splash-title">KASH</h1>
+    </div>
+  </div>
+
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+
+  <script>
+    // Hide splash screen after 2.5 seconds
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const splash = document.getElementById('splash-screen');
+        if (splash) {
+          splash.style.opacity = '0';
+          setTimeout(() => {
+            splash.style.display = 'none';
+          }, 500); // Wait for fade out animation
+        }
+      }, 2500);
+    });
+  </script>
 </body>
 
 </html>

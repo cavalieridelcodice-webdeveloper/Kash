@@ -1,5 +1,5 @@
 // Simple Service Worker for PWA installability
-const CACHE_NAME = 'kash-v2';
+const CACHE_NAME = 'kash-v3';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',

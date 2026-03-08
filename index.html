@@ -28,9 +28,15 @@
   <title>KASH - Gestione Finanziaria</title>
 
   <script>
+    // Unregister any old service workers and clear their caches
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js');
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+      caches.keys().then((cacheNames) => {
+        cacheNames.forEach((cacheName) => caches.delete(cacheName));
       });
     }
   </script>

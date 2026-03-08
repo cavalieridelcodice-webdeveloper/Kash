@@ -1,23 +1,25 @@
-// Simple Service Worker for PWA installability
-const CACHE_NAME = 'kash-v5';
-const ASSETS_TO_CACHE = [
-    './',
-    './index.html',
-    './site.webmanifest',
-    './kash-icon.png',
-    './web-app-manifest-192x192.png',
-    './web-app-manifest-512x512.png',
-    './apple-touch-icon.png'
-];
-
+// Service Worker: clears all caches and unregisters to prevent white screen issues
 self.addEventListener('install', (event) => {
+    // Activate immediately, don't wait
+    self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
     event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_TO_CACHE))
+        // Delete ALL old caches
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cacheName) => {
+                    console.log('[SW] Deleting cache:', cacheName);
+                    return caches.delete(cacheName);
+                })
+            );
+        }).then(() => {
+            // Unregister this service worker so it stops intercepting
+            console.log('[SW] All caches cleared, unregistering...');
+            return self.registration.unregister();
+        })
     );
 });
 
-self.addEventListener('fetch', (event) => {
-    event.respondWith(
-        caches.match(event.request).then((response) => response || fetch(event.request))
-    );
-});
+// Do NOT intercept fetch requests - let everything go straight to the network

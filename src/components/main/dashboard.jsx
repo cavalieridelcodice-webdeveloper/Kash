@@ -1,3 +1,4 @@
+// Dashboard: Pannello riassuntivo con statistiche, grafici e riepilogo finanziario.
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useExpenseStats } from '../../hooks/use-expanse-stats';
 import './dashboard.css';

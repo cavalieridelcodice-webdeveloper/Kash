@@ -1,4 +1,5 @@
 // Importiamo il componente figlio che ci servirà per renderizzare ogni singola spesa
+// Dashboard: Lista che visualizza tutti gli elementi spesa filtrati.
 import ExpenseItem from './expense-item'
 
 // Componente per la lista delle spese che riceve come proprietà l'array 'expenses'

@@ -1,3 +1,4 @@
+// Navigazione: Barra superiore con nome utente e pulsante di logout.
 // Importiamo il CSS specifico per lo stile della testata
 import './hearder.css'
 // Importiamo l'immagine del logo. In React, le immagini locali si importano come se fossero codice (variabili)

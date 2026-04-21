@@ -1,3 +1,4 @@
+// Footer: Piè di pagina con crediti e informazioni sulla privacy.
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import './Footer.css'

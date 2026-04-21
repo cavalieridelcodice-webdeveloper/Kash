@@ -1,3 +1,4 @@
+// Dashboard: Modale di benvenuto per l'inserimento iniziale del nome utente.
 import { useState } from 'react';
 import './welcome-modal.css';
 

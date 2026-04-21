@@ -1,3 +1,4 @@
+// Core: Componente principale che gestisce la sessione, il routing e la struttura globale dell'app.
 import './App.css'
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'

@@ -1,3 +1,4 @@
+// Dashboard: Modulo per la modifica dei dettagli di una spesa esistente.
 import { useState } from 'react'
 import { CATEGORIES } from '../../data/expense'
 

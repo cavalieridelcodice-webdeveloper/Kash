@@ -1,3 +1,4 @@
+// Autenticazione: Pagina di login e registrazione utenti con Supabase e Google.
 import React, { useState, useRef } from 'react';
 import { supabase } from '../../supabaseClient';
 import './Login.css';

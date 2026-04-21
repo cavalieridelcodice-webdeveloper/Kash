@@ -1,3 +1,4 @@
+// Dashboard: Modulo per l'inserimento di nuove spese o entrate.
 // Importiamo useState da React per gestire le variabili che possono cambiare (stato del componente)
 import { useState } from 'react'
 import './expense-form.css'

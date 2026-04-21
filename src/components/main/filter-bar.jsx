@@ -1,4 +1,5 @@
 import { CATEGORIES } from "../../data/expense"
+// Dashboard: Barra superiore per il filtraggio delle spese per testo, importo, categoria e data.
 import './filter-bar.css'
 
 function FilterBar({ searchText, setSearchText, searchAmount, setSearchAmount, category, setCategory, searchDate, setSearchDate }) {

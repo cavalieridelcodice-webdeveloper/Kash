@@ -1,3 +1,4 @@
+// Dashboard: Visualizzazione del singolo elemento spesa con pulsanti di modifica ed eliminazione.
 import './expense-item.css'
 import EditExpenseForm from './edit-expense-form'
 

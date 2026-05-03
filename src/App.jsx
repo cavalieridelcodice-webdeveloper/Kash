@@ -44,14 +44,30 @@ function MainContent({ session, setSession }) {
     }
   }
 
-  const filteredExpenses = expenses.filter(expense => {
-    const matchesText = expense.description.toLowerCase().includes(searchText.toLowerCase())
-    const matchesAmount = searchAmount === '' || expense.amount.toString().includes(searchAmount)
+  const filteredExpenses = (expenses || []).filter(expense => {
+    if (!expense) return false;
+
+    const description = expense.description || '';
+    const matchesText = description.toLowerCase().includes(searchText.toLowerCase())
+    
+    const amount = expense.amount !== undefined && expense.amount !== null ? expense.amount.toString() : '';
+    const matchesAmount = searchAmount === '' || amount.includes(searchAmount)
+    
     const matchesCategory = searchCategory === '' || expense.category === searchCategory
     
     const rawDate = expense.created_at || expense.createdAt
-    const expenseDate = rawDate ? new Date(rawDate).toISOString().split('T')[0] : ''
-    const matchesDate = searchDate === '' || expenseDate === searchDate
+    let matchesDate = true;
+    if (searchDate !== '' && rawDate) {
+      try {
+        const expenseDate = new Date(rawDate).toISOString().split('T')[0]
+        matchesDate = expenseDate === searchDate
+      } catch (e) {
+        console.error("Errore data spesa:", e)
+        matchesDate = false;
+      }
+    } else if (searchDate !== '') {
+      matchesDate = false;
+    }
 
     return matchesText && matchesAmount && matchesCategory && matchesDate
   })
@@ -109,21 +125,47 @@ function App() {
   const [initializing, setInitializing] = useState(true)
 
   useEffect(() => {
-    // Carica la sessione attuale
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-      setInitializing(false)
-    })
+    const initializeAuth = async () => {
+      try {
+        // Carica la sessione attuale
+        const { data: { session }, error } = await supabase.auth.getSession()
+        if (error) throw error
+        setSession(session)
+      } catch (err) {
+        console.error("Errore inizializzazione Auth:", err)
+      } finally {
+        // Garantiamo che l'app esca dallo stato di caricamento dopo un tempo massimo
+        setInitializing(false)
+      }
+    }
+
+    initializeAuth()
 
     // Ascolta i cambiamenti di stato (Login/Logout)
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)
+      setInitializing(false) // Sicurezza aggiuntiva
     })
 
-    return () => subscription.unsubscribe()
+    return () => {
+      if (subscription) subscription.unsubscribe()
+    }
   }, [])
 
-  if (initializing) return null;
+  if (initializing) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh', 
+        color: 'white',
+        fontFamily: 'sans-serif'
+      }}>
+        <p>Caricamento in corso...</p>
+      </div>
+    )
+  }
 
   return (
     <BrowserRouter>

@@ -25,11 +25,12 @@ function Login() {
 
         try {
             if (isRecovering) {
+                if (!email) throw new Error("Inserisci la tua email.");
                 const { error } = await supabase.auth.resetPasswordForEmail(email, {
                     redirectTo: `${window.location.origin}/reset-password`,
                 });
                 if (error) throw error;
-                setSuccessMsg('Email di recupero inviata! Controlla la tua casella di posta (Mittente: Supabase Auth <noreply@mail.app.supabase.io>).');
+                setSuccessMsg('✅ Email di recupero inviata! Controlla la tua casella di posta.');
             } else if (isSignUp) {
                 const { error } = await supabase.auth.signUp({ email, password });
                 if (error) throw error;
